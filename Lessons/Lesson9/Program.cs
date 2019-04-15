@@ -12,7 +12,7 @@ namespace Lesson9
     class Program
     {
         static void Main(string[] args)
-        {
+        {/*
             Console.WriteLine("I/O");
 
             //информация о дисках
@@ -90,15 +90,14 @@ namespace Lesson9
             ZipFile.CreateFromDirectory("c:\\dir1", "dir1.zip");
             //распаковка из zip
             ZipFile.ExtractToDirectory("dir1.zip", "dddd");
-
+            */
             //работа с Word
             var app = new Word.Application();
             object f = AppDomain.CurrentDomain.BaseDirectory + "\\test.docx";
-            var doc = app.Documents.Open(ref f);
+            var doc = app.Documents.Open(f);
             doc.Activate();
             doc.Content.Font.Color = Word.WdColor.wdColorPink;
-            var p = new Word.ParagraphFormat();
-            doc.Paragraphs.Add(p);
+            doc.ExportAsFixedFormat("as.pdf", Word.WdExportFormat.wdExportFormatPDF);
             doc.Close();
 
 
